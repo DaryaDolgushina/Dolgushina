@@ -5,7 +5,6 @@ import SchoolClass from "./SchoolСlass.js";
 const HelpTableRoot = document.querySelector("#HelpTableRoot");
 const TableRoot = document.querySelector("#TableRoot");
 const InputedTableFile = document.querySelector("#InputedTableFile"); // only .csv, .xlsx, .txt
-const InputedTableFile2 = document.querySelector("#InputedTableFile2"); // only .csv, .xlsx, .txt
 
 const TableRootTabularOutput = document.querySelector("#TableRootTabularOutput"); // only .csv, .xlsx, .txt
 const TableRootTabularOutput2 = document.querySelector("#TableRootTabularOutput2"); // only .csv, .xlsx, .txt
@@ -91,12 +90,12 @@ InputedTableFile.addEventListener("change", (e) => {
     }
 });
 
-InputedTableFile2.addEventListener("change", (e) => {
-    let fileName = InputedTableFile2.files[0].name;
+InputedTableFile.addEventListener("change", (e) => {
+    let fileName = InputedTableFile.files[0].name;
     console.log(fileName);
 
     if (fileName.includes(".csv")) {
-        Papa.parse(InputedTableFile2.files[0], {
+        Papa.parse(InputedTableFile.files[0], {
             delimiter: ";",
             skipEmptyLines: true,
             complete: (results) => {
@@ -143,7 +142,7 @@ InputedTableFile2.addEventListener("change", (e) => {
               }
         });
     } else if (fileName.includes(".xlsx")) {
-        readXlsxFile(InputedTableFile2.files[0]).then((data) => {
+        readXlsxFile(InputedTableFile.files[0]).then((data) => {
             let classesNames = [];
             let classes = [];
             let StudentsData = data.slice(1);
@@ -187,7 +186,7 @@ InputedTableFile2.addEventListener("change", (e) => {
         });
     }
     else if (fileName.includes(".txt")) {
-        const file = InputedTableFile2.files[0];
+        const file = InputedTableFile.files[0];
 
         let reader = new FileReader();
         reader.onload = (e) => {
