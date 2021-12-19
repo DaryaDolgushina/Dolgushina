@@ -65,13 +65,13 @@ InputedTableFile.addEventListener("change", (e) => {
                 console.log(results);
               }
         });
-    } else if (fileName.includes(".csv")) {
+    } else if (fileName.includes(".xlsx")) {
         readXlsxFile(InputedTableFile.files[0]).then((data) => {
             TableBuilderLoad.update(data.slice(1), data[0]);
             console.log(data);
         });
     }
-    else if (fileName.includes(".csv")) {
+    else if (fileName.includes(".txt")) {
         const file = InputedTableFile.files[0];
 
         let reader = new FileReader();
@@ -142,7 +142,7 @@ InputedTableFile2.addEventListener("change", (e) => {
                 chartDisciplines.update();
               }
         });
-    } else if (fileName.includes(".csv")) {
+    } else if (fileName.includes(".xlsx")) {
         readXlsxFile(InputedTableFile2.files[0]).then((data) => {
             let classesNames = [];
             let classes = [];
@@ -186,7 +186,7 @@ InputedTableFile2.addEventListener("change", (e) => {
             chartDisciplines.update();
         });
     }
-    else if (fileName.includes(".csv")) {
+    else if (fileName.includes(".txt")) {
         const file = InputedTableFile2.files[0];
 
         let reader = new FileReader();
